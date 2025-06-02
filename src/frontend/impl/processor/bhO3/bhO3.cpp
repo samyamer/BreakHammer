@@ -29,6 +29,9 @@ void BHO3::init() {
   int lat_hist_sensitivity = param<int>("lat_hist_sensitivity").default_val(5);
   std::string lat_dump_path = param<std::string>("lat_dump_path").default_val(std::string(""));
 
+  alternate   = param<bool>("alternate_d").desc("Alternating attacker?").default_val(false);
+  std::cout << "alternate" << alternate << std::endl;
+
   // LLC params
   int llc_latency           = param<int>("llc_latency").desc("Aggregated latency of the LLC.").default_val(47);
   int llc_linesize_bytes    = param<int>("llc_linesize").desc("LLC cache line size in bytes.").default_val(64);
@@ -76,6 +79,14 @@ void BHO3::init() {
     m_cores.push_back(core);
   }
 
+   for(int i=0; i<m_cores.size();i++){
+    if(m_cores[i]->m_is_attacker){
+      m_cores[i]->m_is_allowed = true;
+      std::cout << "core" << i << "is allowed attacker " << std::endl;
+      break;
+    }
+   }
+
   m_logger = Logging::create_logger("BHO3");
 
   // Register the stats
@@ -104,7 +115,37 @@ void BHO3::tick() {
   }
 
   m_llc->tick();
-  for (auto core : m_cores) {
+  if(alternate){
+    // loop over cores and trun off allowed attacker if reached max
+    bool atacker_switch = false;
+    int prev_attacker_ndx = -1;
+    for(int i=0; i<m_cores.size();i++){
+      if(m_cores[i]->m_is_attacker && m_cores[i]->m_is_allowed && !(m_cores[i]->s_insts_recorded % 1000)){
+        // allowed attacker reached max
+        // std::cout << "core" << i << "reached max attacker " << std::endl;
+        atacker_switch = true;
+        prev_attacker_ndx = i;
+        m_cores[i]->m_is_allowed=false;
+        break;
+      }
+    }
+    int ndx = (prev_attacker_ndx+1) %m_cores.size();
+    while(ndx != prev_attacker_ndx){
+      if(m_cores[ndx]->m_is_attacker){
+        m_cores[ndx]->m_is_allowed = true;
+        // std::cout << "core" << ndx << "is allowed attacker " << std::endl;
+        break;
+      }
+      ndx = (ndx+1) %m_cores.size();
+    }
+    if(ndx == prev_attacker_ndx){
+      m_cores[ndx]->m_is_allowed = true;
+      // std::cout << "core" << ndx << "is allowed attacker " << std::endl;
+    }
+  }
+  // if we just turned off an attacker, loop over cores, starting from prev attacker and turn on the first new attacker encounter
+  for (auto core : m_cores) { // can change the alternating here. if core is attacker and done, singal to other attacker to go ahead
+    // if core is attacker and running and reached max allowed insts, turn off
     core->tick();
   }
 }

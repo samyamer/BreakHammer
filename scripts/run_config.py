@@ -16,7 +16,7 @@ SLURM_SUBMIT_DELAY = 0.1
 SLURM_RETRY_DELAY = 1 * SECONDS_IN_MINUTE 
 
 # Number of threads used for the personal computer runs
-PERSONAL_RUN_THREADS = 4
+PERSONAL_RUN_THREADS = 8
 
 # Memory histogram precision
 MEM_HIST_PREC = 5
@@ -26,6 +26,8 @@ NUM_EXPECTED_INSTS = 100_000_000
 
 # Number of cycles the simulation should run
 NUM_MAX_CYCLES = 3_000_000_000
+
+
 
 CONTROLLER = "BHDRAMController"
 SCHEDULER = "BHScheduler"
@@ -40,25 +42,8 @@ thresh_type_list = []
 cache_only_list = []
 
 # List of evaluated RowHammer mitigation mechanisms
-mitigation_list = ["AQUA", "Graphene", "Hydra", "PARA", "REGA", "RFM", "TWiCe-Ideal"]
+# mitigation_list = ["AQUA", "Graphene", "Hydra", "PARA", "REGA", "RFM", "TWiCe-Ideal"]
 
-# List of evaluated RowHammer thresholds
-tRH_list = [4096, 2048, 1024, 512, 256, 128, 64]
-
-# BreakHammer parameters
-flat_thresh_list = [32]
-dynamic_thresh_list = [0.65]
-thresh_type_list = ["MEAN"]
-cache_only_list = [False]
-
-params_list = [
-    mitigation_list,
-    thresh_type_list,
-    cache_only_list,
-    tRH_list,
-    flat_thresh_list,
-    dynamic_thresh_list
-]
 
 PARAM_STR_LIST = [
     "mitigation",
@@ -69,15 +54,17 @@ PARAM_STR_LIST = [
     "dynamic_thresh"
 ]
 
-def get_multicore_params_list():
+def get_multicore_params_list(params_list):
     params = list(itertools.product(*params_list))
-    for cache_only in cache_only_list:
-        params.append(("Dummy", "NONE", cache_only, 0, 0, 0.0))
-    for mitigation in mitigation_list:
-        for tRH in tRH_list:
-            params.append((mitigation, "NONE", False, tRH, 0, 0.0))
-    for tRH in tRH_list:
-        params.append(("BlockHammer", "NONE", False, tRH, 0, 0.0))
+    # for cache_only in cache_only_list:
+    #     params.append(("Dummy", "NONE", cache_only, 0, 0, 0.0))
+
+
+    # for mitigation in mitigation_list:
+    #     for tRH in tRH_list:
+    #         params.append((mitigation, "NONE", False, tRH, 0, 0.0))
+    # for tRH in tRH_list:
+    #     params.append(("BlockHammer", "NONE", False, tRH, 0, 0.0))
     return params
 
 def get_singlecore_params_list():

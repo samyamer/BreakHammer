@@ -105,7 +105,6 @@ class BHO3Core: public Clocked<BHO3Core> {
     std::unordered_map<int, uint64_t> m_lat_histogram;
     std::filesystem::path m_dump_path;
 
-    bool m_is_attacker = false;
 
     void dump_latency_histogram();
 
@@ -119,6 +118,9 @@ class BHO3Core: public Clocked<BHO3Core> {
     size_t s_insts_recorded = 0;
     Clk_t  s_mem_access_cycles = 0; 
     size_t s_mem_requests_issued = 0;
+    bool m_is_attacker = false;
+    bool m_is_allowed = false;
+
 
   public:
     BHO3Core(int id, int ipc, int depth,

@@ -1,0 +1,213 @@
+Trace ID - Name Mapping:
+name_trace_0: /app/cputraces/538.imagick
+name_trace_1: /app/cputraces/531.deepsjeng
+name_trace_2: /app/cputraces/429.mcf
+name_trace_3: /app/cputraces/atk2_s.trace
+name_trace_4: /app/cputraces/atk1.trace
+core3is allowed attacker 
+[Ramulator::DDR5-VRR] nVRR: 383
+[Ramulator::DDR5-VRR] nRFMsb: 416
+[Ramulator::BHO3] [info] Processor Heartbeat 10000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 20000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 30000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 40000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 50000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 60000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 70000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 80000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 90000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 100000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 110000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 120000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 130000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 140000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 150000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 160000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 170000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 180000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 190000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 200000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 210000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 220000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 230000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 240000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 250000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 260000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 270000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 280000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 290000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 300000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 310000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 320000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 330000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 340000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 350000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 360000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 370000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 380000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 390000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 400000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 410000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 420000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 430000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 440000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 450000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 460000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 470000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 480000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 490000000 cycles.
+Frontend:
+  impl: BHO3
+  memory_requests_recorded_core_4: 5937549
+  memory_access_cycles_recorded_core_4: 3205819626
+  insts_recorded_core_4: 5937539
+  memory_requests_recorded_core_3: 6666549
+  memory_access_cycles_recorded_core_3: 3476051473
+  cycles_recorded_core_3: 495843991
+  cycles_recorded_core_4: 495843991
+  memory_requests_recorded_core_2: 8690784
+  cycles_recorded_core_2: 495843991
+  insts_recorded_core_1: 100000000
+  memory_requests_recorded_core_1: 2418532
+  num_expected_insts: 100000000
+  llc_eviction: 17267159
+  llc_write_access: 2143400
+  llc_write_misses: 153659
+  memory_access_cycles_recorded_core_2: 3009696759
+  llc_read_access: 1252596326
+  llc_read_misses: 1250014407
+  llc_mshr_unavailable: 1036162
+  memory_access_cycles_recorded_core_1: 24064400
+  insts_recorded_core_0: 100000001
+  memory_requests_recorded_core_0: 46728
+  insts_recorded_core_2: 100000001
+  cycles_recorded_core_0: 26387687
+  memory_access_cycles_recorded_core_0: 1487038
+  insts_recorded_core_3: 6666539
+  llc_mshr_blacklisted: 1215780634
+  cycles_recorded_core_1: 39804977
+  Translation:
+    impl: RandomTranslation
+
+
+MemorySystem:
+  impl: BHDRAMSystem
+  total_num_other_requests: 0
+  total_num_write_requests: 1406159
+  total_num_read_requests: 17332669
+  memory_system_cycles: 185941497
+
+  DRAM:
+    impl: DDR5-VRR
+    active_cycles_rank1: 170860011
+    total_energy_rank1: 14494082.388250001
+    total_background_energy_rank1: 7076405.9295625007
+    pre_background_energy_rank0: 28454.855250000004
+    active_cycles_rank0: 171142246
+    total_rfm_cycles_rank0: 0
+    total_energy_rank0: 23681090.610125002
+    total_vrr_cycles_rank0: 18883432
+    total_rfm_cycles_rank1: 0
+    total_vrr_cycles_rank1: 2610145
+    total_cmd_energy_rank1: 7417676.458687501
+    total_background_energy: 14153782.041937502
+    pre_background_energy_rank1: 39109.226499999997
+    total_background_energy_rank0: 7077376.1123750014
+    idle_cycles_rank1: 1036006
+    total_cmd_energy: 24021390.956437502
+    total_vrr_energy: 73884.170937500006
+    act_background_energy_rank1: 7037296.7030625008
+    idle_cycles_rank0: 753771
+    total_energy: 38175172.998374999
+    total_rfm_energy: 0
+    total_cmd_energy_rank0: 16603714.497750001
+    act_background_energy_rank0: 7048921.2571250014
+  AddrMapper:
+    impl: RoBaRaCoCh_with_rit
+
+
+  BHDRAMController:
+    impl: BHDRAMController
+    id: Channel 0
+    controller_num_row_conflicts: 16032054
+    controller_num_row_misses: 17812906
+    controller_num_row_hits: 971295
+    controller_core_row_misses_4: 5173738
+    controller_core_row_misses_1: 301761
+    controller_core_row_conflicts_3: 5494338
+    controller_core_row_hits_2: 817713
+    controller_core_row_conflicts_0: 31924
+    controller_core_row_conflicts_4: 5117440
+    controller_core_row_hits_1: 117810
+    controller_core_row_misses_2: 5300693
+    controller_core_row_misses_0: 45057
+    controller_core_row_conflicts_1: 210564
+    controller_core_row_conflicts_2: 3929423
+    controller_core_row_hits_4: 687
+    controller_core_row_hits_0: 877
+    controller_core_row_hits_3: 144
+    controller_core_row_misses_3: 5573727
+    BHScheduler:
+      impl: BHScheduler
+    RefreshManager:
+      impl: AllBank
+
+
+    RowPolicy:
+      impl: CloseRowPolicy
+      num_close_reqs: 55370
+    ControllerPlugin:
+      impl: CommandCounter
+
+
+    ControllerPlugin:
+      impl: Throttler
+      throttler_first_blacklist_cycle: 61318
+      throttler_cycles_recorded_preblacklist_core_4: 163513
+      throttler_insts_recorded_preblacklist_core_4: 4903
+      throttler_throttle_duration_core_4: 179323000
+      throttler_cycles_recorded_preblacklist_core_3: 163513
+      throttler_throttle_duration_core_0: 0
+      throttler_throttle_count_core_0: 0
+      throttler_throttle_count_core_3: 2
+      throttler_insts_recorded_preblacklist_core_0: 548139
+      throttler_throttle_count_core_4: 2
+      throttler_cycles_recorded_preblacklist_core_0: 163513
+      throttler_throttle_count_core_1: 0
+      throttler_cycles_recorded_preblacklist_core_2: 163513
+      throttler_throttle_duration_core_1: 0
+      throttler_throttle_duration_core_2: 136175496
+      throttler_insts_recorded_preblacklist_core_1: 95244
+      throttler_throttle_count_core_2: 2
+      throttler_insts_recorded_preblacklist_core_3: 4903
+      throttler_cycles_recorded_preblacklist_core_1: 163513
+      throttler_insts_recorded_preblacklist_core_2: 13578
+      throttler_throttle_duration_core_3: 185880172
+
+
+    ControllerPlugin:
+      impl: Hydra
+      hydra_rct_check: 21638
+      hydra_rcc_check: 12296749
+      hydra_rctct_check: 1217645
+      hydra_num_rcc_miss: 21638
+      hydra_gct_check: 16595261
+      hydra_num_eviction: 2080
+      hydra_num_write_req: 24218
+      hydra_num_read_req: 21638
+      hydra_num_initialization: 11069
+      hydra_num_vrr_rct: 4656
+      hydra_num_vrr: 56119
+
+
+core 3 ACTS:
+    557 3727
+core 4 ACTS:
+    517 3738
+
+Cycles:
+    4958 43991
+
+ACTS per cycle:
+    0.02167
+    21.67 ACTs per kilo cycles

@@ -1,0 +1,74 @@
+Frontend:
+  Translation:
+    impl: RandomTranslation
+    max_addr: 17179869184
+  clock_ratio: 8
+  impl: BHO3
+  inst_window_depth: 128
+  lat_dump_path: /app/ae_results/microattack/Hydra/mem_latency/MEAN_False_512_32_0.65_Mix41.memlat.dump
+  llc_capacity_per_core: 2MB
+  llc_num_mshr_per_core: 16
+  no_wait_trace_cache_only: false
+  num_expected_insts: 100000000
+  num_max_cycles: 3000000000
+  trace_cache_only: false
+  traces:
+  - /app/cputraces/538.imagick
+  - /app/cputraces/531.deepsjeng
+  - /app/cputraces/429.mcf
+  - /app/cputraces/atk2_s.trace
+MemorySystem:
+  AddrMapper:
+    impl: RoBaRaCoCh_with_rit
+  BHDRAMController:
+    BHScheduler:
+      impl: BHScheduler
+    RefreshManager:
+      impl: AllBank
+    RowPolicy:
+      cap: 4
+      impl: CloseRowPolicy
+    impl: BHDRAMController
+    plugins:
+    - ControllerPlugin:
+        commands_to_count:
+        - ACT
+        - PRE
+        impl: CommandCounter
+        path: /app/ae_results/microattack/Hydra/cmd_count/MEAN_False_512_32_0.65_Mix41.cmd.count
+    - ControllerPlugin:
+        blacklist_max_mshr: 5
+        blacklist_mshr_decrement: 1
+        breakhammer_plus: true
+        impl: Throttler
+        snapshot_clk: -1
+        throttle_dynamic_thresh: 0.65
+        throttle_flat_thresh: 32
+        throttle_type: MEAN
+        window_period_ns: 64000000
+    - ControllerPlugin:
+        hydra_group_threshold: 204
+        hydra_rcc_num_per_rank: 4096
+        hydra_rcc_policy: RANDOM
+        hydra_reset_period_ns: 32000000
+        hydra_row_group_size: 128
+        hydra_tracking_threshold: 256
+        impl: Hydra
+  DRAM:
+    RFM:
+      BRC: 2
+    current:
+      preset: Default
+    drampower_enable: true
+    impl: DDR5-VRR
+    org:
+      channel: 1
+      preset: DDR5_16Gb_x8
+      rank: 2
+    timing:
+      preset: DDR5_3200AN
+    voltage:
+      preset: Default
+  clock_ratio: 3
+  impl: BHDRAMSystem
+

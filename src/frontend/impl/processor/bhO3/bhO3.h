@@ -27,6 +27,7 @@ class BHO3 final : public IFrontEnd, public Implementation {
     std::string llc_serialization_filename;
     bool llc_deserialize = false;
     std::string llc_deserialization_filename;
+    bool alternate;
 
   public:
     void init() override;

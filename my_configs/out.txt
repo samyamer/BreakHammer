@@ -1,0 +1,134 @@
+alternate1
+Trace ID - Name Mapping:
+name_trace_0: /app/cputraces/538.imagick
+name_trace_1: /app/cputraces/531.deepsjeng
+name_trace_2: /app/cputraces/atk1.trace
+core2is allowed attacker 
+[Ramulator::DDR5-VRR] nVRR: 383
+[Ramulator::DDR5-VRR] nRFMsb: 416
+[Ramulator::BHO3] [info] Processor Heartbeat 10000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 20000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 30000000 cycles.
+Frontend:
+  impl: BHO3
+  memory_requests_recorded_core_2: 556579
+  cycles_recorded_core_2: 32199961
+  insts_recorded_core_1: 100000000
+  memory_requests_recorded_core_1: 191692
+  num_expected_insts: 100000000
+  llc_eviction: 556921
+  llc_write_access: 61761
+  llc_write_misses: 1596
+  memory_access_cycles_recorded_core_2: 166517853
+  llc_read_access: 32337060
+  llc_read_misses: 32236921
+  llc_mshr_unavailable: 100238
+  memory_access_cycles_recorded_core_1: 14025263
+  insts_recorded_core_0: 100000001
+  memory_requests_recorded_core_0: 3274
+  insts_recorded_core_2: 556574
+  cycles_recorded_core_0: 25673421
+  memory_access_cycles_recorded_core_0: 763408
+  llc_mshr_blacklisted: 31498916
+  cycles_recorded_core_1: 32199961
+  Translation:
+    impl: RandomTranslation
+
+
+MemorySystem:
+  impl: BHDRAMSystem
+  total_num_other_requests: 0
+  total_num_write_requests: 218
+  total_num_read_requests: 591239
+  memory_system_cycles: 12074985
+
+  DRAM:
+    impl: DDR5-VRR
+    active_cycles_rank1: 9720938
+    total_energy_rank1: 744326.73812500003
+    total_background_energy_rank1: 454825.958125
+    pre_background_energy_rank0: 1856.1297500000001
+    active_cycles_rank0: 11114016
+    total_rfm_cycles_rank0: 0
+    total_energy_rank0: 1219088.8900000001
+    total_vrr_cycles_rank0: 827280
+    total_rfm_cycles_rank1: 0
+    total_vrr_cycles_rank1: 0
+    total_cmd_energy_rank1: 289500.78000000003
+    total_background_energy: 914440.62187500007
+    pre_background_energy_rank1: 54444.824250000005
+    total_background_energy_rank0: 459614.66375000007
+    idle_cycles_rank1: 1442247
+    total_cmd_energy: 1048975.0062500001
+    total_vrr_energy: 2843.7750000000001
+    act_background_energy_rank1: 400381.133875
+    idle_cycles_rank0: 49169
+    total_energy: 1963415.6281250003
+    total_rfm_energy: 0
+    total_cmd_energy_rank0: 759474.22625000007
+    act_background_energy_rank0: 457758.53400000004
+  AddrMapper:
+    impl: RoBaRaCoCh_with_rit
+
+
+  BHDRAMController:
+    impl: BHDRAMController
+    id: Channel 0
+    controller_num_row_conflicts: 547113
+    controller_num_row_hits: 10319
+    controller_core_row_conflicts_2: 541576
+    controller_core_row_misses_2: 556567
+    controller_core_row_conflicts_1: 4657
+    controller_core_row_hits_1: 10185
+    controller_core_row_conflicts_0: 518
+    controller_num_row_misses: 581255
+    controller_core_row_hits_2: 10
+    controller_core_row_misses_0: 3055
+    controller_core_row_misses_1: 21346
+    controller_core_row_hits_0: 74
+    BHScheduler:
+      impl: BHScheduler
+    RefreshManager:
+      impl: AllBank
+
+
+    RowPolicy:
+      impl: CloseRowPolicy
+      num_close_reqs: 121
+    ControllerPlugin:
+      impl: CommandCounter
+
+
+    ControllerPlugin:
+      impl: Throttler
+      throttler_insts_recorded_preblacklist_core_2: 4900
+      throttler_cycles_recorded_preblacklist_core_1: 149414
+      throttler_throttle_count_core_2: 1
+      throttler_insts_recorded_preblacklist_core_1: 207247
+      throttler_first_blacklist_cycle: 56031
+      throttler_throttle_duration_core_2: 12018954
+      throttler_throttle_duration_core_1: 0
+      throttler_cycles_recorded_preblacklist_core_2: 149414
+      throttler_throttle_count_core_1: 0
+      throttler_cycles_recorded_preblacklist_core_0: 149414
+      throttler_insts_recorded_preblacklist_core_0: 548471
+      throttler_throttle_count_core_0: 0
+      throttler_throttle_duration_core_0: 0
+
+
+    ControllerPlugin:
+      impl: Hydra
+      hydra_rct_check: 71
+      hydra_rcc_check: 489844
+      hydra_rctct_check: 61909
+      hydra_num_rcc_miss: 71
+      hydra_gct_check: 519346
+      hydra_num_eviction: 0
+      hydra_num_write_req: 48
+      hydra_num_read_req: 71
+      hydra_num_initialization: 24
+      hydra_num_vrr_rct: 240
+      hydra_num_vrr: 2160
+
+
+

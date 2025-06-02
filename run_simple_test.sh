@@ -17,7 +17,7 @@ else
   tar -xvf cputraces.tar.gz --no-same-owner
 fi
 
-echo "[INFO] Running the simple test simulation"
-./ramulator2 -f base_config.yaml
+# echo "[INFO] Running the simple test simulation"
+# ./ramulator2 -f base_config.yaml
 
-rm ./test.cmds1
+# rm ./test.cmds1

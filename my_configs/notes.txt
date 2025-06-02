@@ -1,0 +1,13 @@
+
+Running slightly modified configs and comparing them with the paper results
+
+atk2_s.trace -> just a duplication of the 75 instructions in the atk1 trace
+
+1.
+hydra, mean, false, 512,32,0.65,mix_41 but with atk2_s.trace
+
+No difference at all between atk1.trace and atk2_s.trace
+
+3.
+Run two attacker cores with normal breakhammer
+hydra, mean, false, 512,32,0.65,mix_41 but with atk2_s.trace

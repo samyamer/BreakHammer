@@ -1,0 +1,175 @@
+Trace ID - Name Mapping:
+name_trace_0: /app/cputraces/538.imagick
+name_trace_1: /app/cputraces/531.deepsjeng
+name_trace_2: /app/cputraces/429.mcf
+name_trace_3: /app/cputraces/atk2_s.trace
+core3is allowed attacker 
+[Ramulator::DDR5-VRR] nVRR: 383
+[Ramulator::DDR5-VRR] nRFMsb: 416
+[Ramulator::BHO3] [info] Processor Heartbeat 10000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 20000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 30000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 40000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 50000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 60000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 70000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 80000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 90000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 100000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 110000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 120000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 130000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 140000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 150000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 160000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 170000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 180000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 190000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 200000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 210000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 220000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 230000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 240000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 250000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 260000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 270000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 280000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 290000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 300000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 310000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 320000000 cycles.
+[Ramulator::BHO3] [info] Processor Heartbeat 330000000 cycles.
+Frontend:
+  impl: BHO3
+  memory_requests_recorded_core_3: 4637253
+  memory_access_cycles_recorded_core_3: 1665765458
+  cycles_recorded_core_3: 332525276
+  memory_requests_recorded_core_2: 8690786
+  cycles_recorded_core_2: 332525276
+  insts_recorded_core_1: 100000000
+  memory_requests_recorded_core_1: 1786198
+  num_expected_insts: 100000000
+  llc_eviction: 9675541
+  llc_write_access: 1827970
+  llc_write_misses: 33266
+  memory_access_cycles_recorded_core_2: 1887862940
+  llc_read_access: 515172110
+  llc_read_misses: 511627432
+  llc_mshr_unavailable: 171286
+  memory_access_cycles_recorded_core_1: 19632773
+  insts_recorded_core_0: 100000001
+  memory_requests_recorded_core_0: 31755
+  insts_recorded_core_2: 100000001
+  cycles_recorded_core_0: 26122741
+  memory_access_cycles_recorded_core_0: 1239014
+  insts_recorded_core_3: 4637247
+  llc_mshr_blacklisted: 501659365
+  cycles_recorded_core_1: 36402449
+  Translation:
+    impl: RandomTranslation
+
+
+MemorySystem:
+  impl: BHDRAMSystem
+  total_num_other_requests: 0
+  total_num_write_requests: 1012927
+  total_num_read_requests: 9806597
+  memory_system_cycles: 124696979
+
+  DRAM:
+    impl: DDR5-VRR
+    active_cycles_rank1: 114637857
+    total_energy_rank1: 10071182.672625
+    total_background_energy_rank1: 4745801.1481874995
+    pre_background_energy_rank0: 19131.1715
+    active_cycles_rank0: 114770923
+    total_rfm_cycles_rank0: 0
+    total_energy_rank0: 14057112.168250002
+    total_vrr_cycles_rank0: 9311879
+    total_rfm_cycles_rank1: 0
+    total_vrr_cycles_rank1: 2260083
+    total_cmd_energy_rank1: 5325381.5244375002
+    total_background_energy: 9492059.7107499987
+    pre_background_energy_rank1: 24154.413000000004
+    total_background_energy_rank0: 4746258.5625625001
+    idle_cycles_rank1: 639852
+    total_cmd_energy: 14636235.130125001
+    total_vrr_energy: 39778.619374999995
+    act_background_energy_rank1: 4721646.7351874998
+    idle_cycles_rank0: 506786
+    total_energy: 24128294.840875
+    total_rfm_energy: 0
+    total_cmd_energy_rank0: 9310853.6056875009
+    act_background_energy_rank0: 4727127.3910625
+  AddrMapper:
+    impl: RoBaRaCoCh_with_rit
+
+
+  BHDRAMController:
+    impl: BHDRAMController
+    id: Channel 0
+    controller_num_row_conflicts: 8952688
+    controller_num_row_misses: 10174270
+    controller_core_row_misses_1: 210225
+    controller_core_row_conflicts_3: 4421188
+    controller_core_row_hits_2: 576158
+    controller_core_row_conflicts_0: 20846
+    controller_core_row_hits_1: 88680
+    controller_core_row_misses_2: 4263204
+    controller_core_row_misses_0: 29930
+    controller_core_row_conflicts_1: 150109
+    controller_core_row_conflicts_2: 3209893
+    controller_core_row_hits_0: 674
+    controller_core_row_hits_3: 328
+    controller_core_row_misses_3: 4636923
+    controller_num_row_hits: 696834
+    BHScheduler:
+      impl: BHScheduler
+    RefreshManager:
+      impl: AllBank
+
+
+    RowPolicy:
+      impl: CloseRowPolicy
+      num_close_reqs: 42751
+    ControllerPlugin:
+      impl: CommandCounter
+
+
+    ControllerPlugin:
+      impl: Throttler
+      throttler_first_blacklist_cycle: 63117
+      throttler_cycles_recorded_preblacklist_core_3: 168310
+      throttler_throttle_duration_core_0: 0
+      throttler_throttle_count_core_0: 0
+      throttler_throttle_count_core_3: 2
+      throttler_insts_recorded_preblacklist_core_0: 561591
+      throttler_cycles_recorded_preblacklist_core_0: 168310
+      throttler_throttle_count_core_1: 0
+      throttler_cycles_recorded_preblacklist_core_2: 168310
+      throttler_throttle_duration_core_1: 0
+      throttler_throttle_duration_core_2: 92352537
+      throttler_insts_recorded_preblacklist_core_1: 150118
+      throttler_throttle_count_core_2: 1
+      throttler_insts_recorded_preblacklist_core_3: 4898
+      throttler_cycles_recorded_preblacklist_core_1: 168310
+      throttler_insts_recorded_preblacklist_core_2: 14605
+      throttler_throttle_duration_core_3: 124633849
+
+
+    ControllerPlugin:
+      impl: Hydra
+      hydra_rct_check: 23807
+      hydra_rcc_check: 6276271
+      hydra_rctct_check: 544657
+      hydra_num_rcc_miss: 23807
+      hydra_gct_check: 9629613
+      hydra_num_eviction: 5973
+      hydra_num_write_req: 28255
+      hydra_num_read_req: 23807
+      hydra_num_initialization: 11141
+      hydra_num_vrr_rct: 2014
+      hydra_num_vrr: 30214
+
+
+

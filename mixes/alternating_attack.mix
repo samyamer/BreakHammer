@@ -1,0 +1,10 @@
+Mix0,HHAA,429.mcf,429.mcf,atk1.trace,atk1.trace
+Mix1,MMAA,510.parest,462.libquantum,atk1.trace,atk1.trace
+Mix2,MMAA,505.mcf,470.lbm,atk1.trace,atk1.trace
+Mix3,HHAA,429.mcf,429.mcf,atk1.trace,atk1.trace
+Mix4,HMAA,429.mcf,462.libquantum,atk1.trace,atk1.trace
+Mix5,HMAA,429.mcf,433.milc,atk1.trace,atk1.trace
+Mix6,HMAA,429.mcf,470.lbm,atk1.trace,atk1.trace
+Mix7,LLAA,tpcc64,464.h264ref,atk1.trace,atk1.trace
+Mix8,LLAA,ycsb_abgsave,ycsb_bserver,atk1.trace,atk1.trace
+Mix9,MMAA,505.mcf,482.sphinx3,atk1.trace,atk1.trace

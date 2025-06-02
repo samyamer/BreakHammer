@@ -132,6 +132,8 @@ m_llc(llc), m_lat_hist_sens(lat_hist_sens), m_is_attacker(is_attacker), m_spec_t
 }
 
 void BHO3Core::tick() {
+  //am i an attacker? if so am I allowed to continue?
+  
   static int retire_log = 1;
   m_clk++;
 
@@ -145,6 +147,7 @@ void BHO3Core::tick() {
       reached_expected_num_insts = true;
     }
   }
+  if(m_is_attacker && !m_is_allowed){return;} // comment out to run normal breakhammer
 
   // First, issue the non-memory instructions
   int num_inserted_insts = 0;
@@ -184,7 +187,7 @@ void BHO3Core::tick() {
         // TODO: Should we allow both load and writeback to issue at the same cycle?
         return;
       }
-    } else {
+    } else { // stall (as next inst wasn't grabbed) happens if core ran out of mshr entries 
       return;
     }
   }

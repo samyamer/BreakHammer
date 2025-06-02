@@ -16,6 +16,8 @@ argparser.add_argument("-bc", "--base_config")
 argparser.add_argument("-tc", "--trace_combination")
 argparser.add_argument("-td", "--trace_directory")
 argparser.add_argument("-rd", "--result_directory")
+argparser.add_argument("-a", "--alternate")
+argparser.add_argument("-bh", "--break_hammer")
 
 args = argparser.parse_args()
 
@@ -23,12 +25,16 @@ WORK_DIR = args.working_directory
 BASE_CONFIG_FILE = args.base_config
 TRACE_COMBINATION_FILE = args.trace_combination
 TRACE_DIR = args.trace_directory
-RESULT_DIR = args.result_directory
+BASE_DIR = args.result_directory
 
 CMD_HEADER = "#! /bin/bash"
 BASE_CMD = f"{WORK_DIR}/ramulator2"
 
 BASE_CONFIG = None
+
+ALTERNATE = True if args.alternate == '1' else False
+BH = True if args.break_hammer == '1' else False
+
 
 with open(BASE_CONFIG_FILE, "r") as f:
     try:
@@ -41,8 +47,11 @@ if BASE_CONFIG == None:
     exit(0)
 
 BASE_CONFIG["Frontend"]["num_expected_insts"] = NUM_EXPECTED_INSTS
+
+
 if NUM_MAX_CYCLES > 0:
     BASE_CONFIG["Frontend"]["num_max_cycles"] = NUM_MAX_CYCLES 
+
 
 TRACE_COMBS = {}
 TRACE_TYPES = {}
@@ -56,15 +65,17 @@ with open(TRACE_COMBINATION_FILE, "r") as f:
         TRACE_COMBS[trace_name] = traces
         TRACE_TYPES[trace_name] = trace_type
 
-for mitigation in mitigation_list + ["Dummy", "BlockHammer"]:
-    for path in [
-            f"{RESULT_DIR}/{mitigation}/stats",
-            f"{RESULT_DIR}/{mitigation}/configs",
-            f"{RESULT_DIR}/{mitigation}/cmd_count",
-            f"{RESULT_DIR}/{mitigation}/mem_latency"
-        ]:
-        if not os.path.exists(path):
-            os.makedirs(path)
+def create_dirs(dir):
+    for mitigation in mitigation_list:
+        for path in [
+                f"{dir}/{mitigation}/stats",
+                f"{dir}/{mitigation}/configs",
+                f"{dir}/{mitigation}/cmd_count",
+                f"{dir}/{mitigation}/mem_latency"
+
+            ]:
+            if not os.path.exists(path):
+                os.makedirs(path)
 
 def get_singlecore_run_commands():
     run_commands = []
@@ -89,9 +100,7 @@ def get_singlecore_run_commands():
                     "throttle_type": throttle_type,
                     "throttle_flat_thresh": flat_thresh,
                     "throttle_dynamic_thresh": dynamic_thresh,
-                    "window_period_ns": 64000000, 
-                    "snapshot_clk": -1,
-                    "blacklist_max_mshr": 5,
+                    "window_period_ns": 64000000,
                     "blacklist_mshr_decrement": 1,
                     "breakhammer_plus": True
                 }
@@ -112,7 +121,7 @@ def get_singlecore_run_commands():
 
 def get_multicore_run_commands():
     run_commands = []
-    multicore_params = get_multicore_params_list()
+    multicore_params = get_multicore_params_list(params_list)
     _, multicore_traces = get_trace_lists(TRACE_COMBINATION_FILE)
     for config in multicore_params:
         mitigation, throttle_type, _, tRH, flat_thresh, dynamic_thresh = config
@@ -169,11 +178,71 @@ def get_multicore_run_commands():
 
     return run_commands
 
-single_cmds = get_singlecore_run_commands()
-multi_cmds = get_multicore_run_commands()
 
+mitigation_list = ["Hydra", "RFM"]
+# List of evaluated RowHammer thresholds
+# tRH_list = [4096, 2048, 1024, 512, 256, 128, 64]
+tRH_list = [1024]
+# BreakHammer parameters
+flat_thresh_list = [32]
+dynamic_thresh_list = [0.65]
+thresh_type_list = ["MEAN"]
+cache_only_list = [False]
+
+params_list = [
+    mitigation_list,
+    thresh_type_list,
+    cache_only_list,
+    tRH_list,
+    flat_thresh_list,
+    dynamic_thresh_list
+]
+# single_cmds = get_singlecore_run_commands()
+single_cmds = []
+
+BASE_CONFIG["Frontend"]["alternate_d"] = True
+
+RESULT_DIR = BASE_DIR+ "/alternate_BH"
+create_dirs(RESULT_DIR)
+multi_cmds = get_multicore_run_commands() # alternate and BH
 with open("run.sh", "w") as f:
     for cmd in single_cmds + multi_cmds:
         f.write(f"{cmd}\n")
+
+
+BASE_CONFIG["Frontend"]["alternate_d"] = False
+RESULT_DIR = BASE_DIR+ "/no_alternate_BH" # no alternate + BH
+create_dirs(RESULT_DIR)
+
+multi_cmds = get_multicore_run_commands()
+with open("run.sh", "a") as f:
+    for cmd in single_cmds + multi_cmds:
+        f.write(f"{cmd}\n")
+
+BASE_CONFIG["Frontend"]["alternate_d"] = False
+RESULT_DIR = BASE_DIR+ "/no_alternate_noBH" # no alternate no BH
+
+tRH_list = [1024]
+# BreakHammer parameters
+flat_thresh_list = [0]
+dynamic_thresh_list = [0.0]
+thresh_type_list = ["NONE"]
+cache_only_list = [False]
+
+params_list = [
+    mitigation_list,
+    thresh_type_list,
+    cache_only_list,
+    tRH_list,
+    flat_thresh_list,
+    dynamic_thresh_list
+]
+
+create_dirs(RESULT_DIR)
+multi_cmds = get_multicore_run_commands()
+with open("run.sh", "a") as f:
+    for cmd in single_cmds + multi_cmds:
+        f.write(f"{cmd}\n")
+
 
 os.system("chmod uog+x run.sh")
